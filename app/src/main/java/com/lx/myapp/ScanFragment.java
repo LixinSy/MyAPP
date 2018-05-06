@@ -26,17 +26,13 @@ public class ScanFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    public  boolean isAdded;
 
     private OnFragmentInteractionListener mListener;
 
     public ScanFragment() {
         // Required empty public constructor
-        setAdded(false);
     }
-    public void setAdded(boolean added){
-        isAdded = added;
-    }
+
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.

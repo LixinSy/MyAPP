@@ -1,12 +1,23 @@
 package com.lx.myapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.GridView;
+import android.widget.SimpleAdapter;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -26,16 +37,25 @@ public class BaikeFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    public boolean isAdded;
+
     private OnFragmentInteractionListener mListener;
+
+    private GridView historySearch;
+    private GridView hotSearch;
+    private TextView keyInput;
+    private Context context;
+
+    private String [] historyPlantNames = new String[]{"红花檵木", "郁金香","光叶子花","金盏菊","紫荆","爪哇树角苔"};
+    private List<Map<String, Object>> historyPlantList;
+    private SimpleAdapter historyPlantAdapter;
+    private String [] hotPlantNames = new String[]{"日本晚樱", "天竺葵","光叶子花","金盏菊","紫荆","迎春花"};
+    private List<Map<String, Object>> hotPlantList;
+    private SimpleAdapter hotPlantAdapter;
 
     public BaikeFragment() {
         // Required empty public constructor
-        setAdded(false);
     }
-    public void setAdded(boolean added){
-        isAdded = added;
-    }
+
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -53,7 +73,6 @@ public class BaikeFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,10 +83,77 @@ public class BaikeFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_baike, container, false);
+        View view = inflater.inflate(R.layout.fragment_baike, container, false);
+        context = getActivity().getApplication();
+        initView(view);
+        return view;
+    }
+
+    private void initView(View view){
+        historyPlantList = new LinkedList<Map<String, Object>>();
+        for (int i=0;i<historyPlantNames.length;i++){
+            Map<String, Object> showitem = new HashMap<String, Object>();
+            showitem.put("name", historyPlantNames[i]);
+            historyPlantList.add(showitem);
+        }
+        historyPlantAdapter = new SimpleAdapter(context,  historyPlantList,R.layout.plant_name_item,
+                new String[]{"name"},new int[]{R.id.plant_name});
+
+        hotPlantList = new LinkedList<Map<String, Object>>();
+        for (int i=0;i<hotPlantNames.length;i++){
+            Map<String, Object> showitem = new HashMap<String, Object>();
+            showitem.put("name", hotPlantNames[i]);
+            hotPlantList.add(showitem);
+        }
+        hotPlantAdapter = new SimpleAdapter(context,  hotPlantList,R.layout.plant_name_item,
+                new String[]{"name"},new int[]{R.id.plant_name});
+
+        historySearch  = view.findViewById(R.id.his_sear_grid);
+        hotSearch  = view.findViewById(R.id.hot_plant_grid);
+        keyInput = view.findViewById(R.id.key_input);
+
+        historySearch.setAdapter(historyPlantAdapter);
+        hotSearch.setAdapter(hotPlantAdapter);
+
+        historySearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TextView textView = view.findViewById(R.id.plant_name);
+                String content = textView.getText().toString();
+                Toast.makeText(context, "你点击了~" + position + "~项 "
+                        +content, Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(context,PlantActivity.class);
+                Bundle data = new Bundle();
+                data.putString("plant_key",content);
+                intent.putExtra("plant_data",data);
+                startActivity(intent);
+            }
+        });
+        hotSearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TextView textView = view.findViewById(R.id.plant_name);
+                String content = textView.getText().toString();
+                Toast.makeText(context, "你点击了~" + position + "~项 "
+                        +content, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(),PlantActivity.class);
+                Bundle data = new Bundle();
+                data.putString("plant_key",content);
+                intent.putExtra("plant_data",data);
+                startActivity(intent);
+            }
+        });
+
+        keyInput.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SearchKeyActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     // TODO: Rename method, update argument and hook method into UI event

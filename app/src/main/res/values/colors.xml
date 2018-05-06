@@ -4,7 +4,13 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="text_gray">#888888</color>
-    <color name="text_blue">#0000ff</color>
-    <color name="div_color">#888888</color>
-    <color name="icon_color">#646161</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="div_color">#ababab</color>
+    <color name="div_color1">#cccbcb</color>
+    <color name="icon_color">#918d8d</color>
+    <color name="icon_color1">#979797</color>
+    <color name="back_color">#f7f5f5</color>
+    <color name="selected_color">#407df7</color>
+    <color name="no_selected_color">#949292</color>
 </resources>

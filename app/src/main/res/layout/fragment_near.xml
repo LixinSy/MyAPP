@@ -7,13 +7,6 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <EditText
-            android:id="@+id/search_edit"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:gravity="fill_vertical|center"
-            android:hint="请输入地点或植物"
-            android:background="#af7930ef"/>
         <com.baidu.mapapi.map.MapView
             android:id="@+id/baidu_mapView"
             android:layout_width="fill_parent"
@@ -28,7 +21,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentBottom="true"
             android:src="@drawable/loc_icon"
-            android:background="#62586a81"/>
+            android:background="#a8f9f9fa"/>
         <ImageView
             android:id="@+id/fresh_content"
             android:layout_width="40dp"
@@ -37,7 +30,26 @@
             android:layout_marginLeft="20dp"
             android:layout_marginBottom="20dp"
             android:src="@drawable/fresh_icon"
-            android:background="#62586a81"/>
-
+            android:background="#a8f9f9fa"/>
+        <EditText
+            android:id="@+id/search_edit"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:textAlignment="center"
+            android:layout_marginTop="10dp"
+            android:hint="请输入地点或植物"
+            android:background="#ffffff"/>
+        <Spinner
+            android:id="@+id/spi"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="70dp"
+            android:layout_marginRight="20dp"
+            android:tooltipText="afafaf"
+            android:spinnerMode="dropdown"
+            android:background="@color/white">
+        </Spinner>
     </RelativeLayout>
 </FrameLayout>

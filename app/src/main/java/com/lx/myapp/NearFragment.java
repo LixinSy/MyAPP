@@ -1,36 +1,26 @@
 package com.lx.myapp;
 
-import android.Manifest;
 import android.content.Context;
-import android.content.pm.PackageManager;
-import android.location.LocationListener;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.support.v4.app.ActivityCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.Spinner;
 
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
-import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
-import com.baidu.mapapi.map.BitmapDescriptorFactory;
 import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
-import com.baidu.mapapi.map.Marker;
-import com.baidu.mapapi.map.MyLocationConfiguration;
-import com.baidu.mapapi.map.MyLocationConfiguration.LocationMode;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
 
@@ -58,6 +48,7 @@ public class NearFragment extends Fragment {
     private ImageView btnToLoc;
     private ImageView freshContent;
     private EditText searchEdit;
+    private Spinner spinner;
     private MapView mMapView = null;
     private BaiduMap mBaiduMap = null;
     public LocationClient mLocationClient = null;
@@ -113,6 +104,7 @@ public class NearFragment extends Fragment {
         btnToLoc = view.findViewById(R.id.to_self_loc);
         freshContent = view.findViewById(R.id.fresh_content);
         searchEdit = view.findViewById(R.id.search_edit);
+        spinner = view.findViewById(R.id.spi);
         mMapView = view.findViewById(R.id.baidu_mapView);
         initMap();
 
@@ -201,7 +193,7 @@ public class NearFragment extends Fragment {
                 MapStatus.Builder builder = new MapStatus.Builder();
                 builder.target(ll).zoom(18.0f);
                 mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
-
+                /*
                 if (location.getLocType() == BDLocation.TypeGpsLocation) {
                     // GPS定位结果
                     Toast.makeText(context, location.getAddrStr(), Toast.LENGTH_SHORT).show();
@@ -219,6 +211,7 @@ public class NearFragment extends Fragment {
                 } else if (location.getLocType() == BDLocation.TypeCriteriaException) {
                     Toast.makeText(context, "手机模式错误，请检查是否飞行", Toast.LENGTH_SHORT).show();
                 }
+                */
             }
         }
     }

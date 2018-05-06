@@ -9,44 +9,6 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <RelativeLayout
-            android:id="@+id/top_bar"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:background="#cccccc">
-            <com.lx.myapp.CircleImageView
-                android:id="@+id/qq_figure"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="4dp"
-                android:src="@drawable/qq"
-                android:gravity="center_vertical"/>
-            <TextView
-                android:id="@+id/nickname"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/qq_figure"
-                android:text="12"
-                android:textSize="18sp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:gravity="center_vertical"/>
-            <TextView
-                android:id="@+id/txt_top_bar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerInParent="true"
-                android:gravity="center"
-                android:text="信息"
-                android:textColor="#111111"
-                android:textSize="18sp" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2px"
-                android:layout_alignParentBottom="true"
-                android:background="@color/div_color" />
-        </RelativeLayout>
         <RadioGroup
             android:id="@+id/tab_menu_bar"
             android:layout_width="match_parent"
@@ -57,17 +19,17 @@
             <RadioButton
                 android:id="@+id/tab_find"
                 style="@style/tab_menu_item"
-                android:drawableTop="@drawable/tab_menu_near"
+                android:drawableTop="@drawable/ic_find"
                 android:text="发现"/>
             <RadioButton
                 android:id="@+id/tab_scan"
                 style="@style/tab_menu_item"
-                android:drawableTop="@drawable/tab_menu_near"
+                android:drawableTop="@drawable/ic_scan"
                 android:text="识花" />
             <RadioButton
                 android:id="@+id/tab_baike"
                 style="@style/tab_menu_item"
-                android:drawableTop="@drawable/tab_menu_near"
+                android:drawableTop="@drawable/ic_baike"
                 android:text="百科" />
             <RadioButton
                 android:id="@+id/tab_near"
@@ -85,21 +47,142 @@
             android:id="@+id/fg_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@id/div_tab_bar"
-            android:layout_below="@id/top_bar">
+            android:layout_above="@id/div_tab_bar">
         </FrameLayout>
     </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/left_slid"
-        android:layout_width="200dp"
+        android:layout_width="280dp"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:layout_gravity="start"
-        android:background="#555555">
-        <TextView
-            android:layout_width="wrap_content"
+        android:background="#ffffff"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/user_penal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="侧滑框"/>
+            android:orientation="vertical"
+            android:background="@drawable/figures_bg">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:gravity="center_vertical">
+                <com.lx.myapp.CircleImageView
+                    android:id="@+id/qq_figure"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/figures" />
+                <TextView
+                    android:id="@+id/nickname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="夜凌云"
+                    android:textSize="28sp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/qq_note"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="20dp"
+                android:text="落花时节又逢君..."
+                android:textSize="14sp"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/div_color1" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/ic_local_florist_black_24dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="我的花草"
+                android:textSize="16sp"/>
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginLeft="120dp"
+                android:src="@drawable/ic_forward"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/ic_my_flowers" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="我的收藏"
+                android:textSize="16sp"/>
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginLeft="120dp"
+                android:src="@drawable/ic_forward"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/ic_pictures" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="我的相册"
+                android:textSize="16sp"/>
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginLeft="120dp"
+                android:src="@drawable/ic_forward"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/ic_clock" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="识别历史"
+                android:textSize="16sp"/>
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginLeft="120dp"
+                android:src="@drawable/ic_forward"/>
+        </LinearLayout>
     </LinearLayout>
 </android.support.v4.widget.DrawerLayout>

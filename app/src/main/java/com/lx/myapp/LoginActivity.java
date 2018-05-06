@@ -1,21 +1,14 @@
 package com.lx.myapp;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
@@ -86,7 +79,7 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener{
                     Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                     Bundle data = new Bundle();
                     data.putString("nickname",loginName.getText().toString().trim());
-                    data.putString("figure", "");
+                    data.putString("figure", "@drawable/figures");
                     intent.putExtra("qq_data",data);
                     startActivity(intent);
                     finish();
@@ -184,9 +177,11 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener{
                         try {
                             nickName = jb.getString("nickname");
                             figureurl = jb.getString("figureurl_qq_2");  //头像图片的url
-                            //nickName.setText(name);
-                            //Uri parse = Uri.parse(figureurl);
-                            //figure.setImageURI(parse);
+                            String sex = jb.getString("gender");
+                            User.setNickname(nickName);
+                            User.setSex(sex);
+                            User.setFigurePath(figureurl);
+                            User.setNote("春风十里不及你...");
                             Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                             Bundle data = new Bundle();
                             data.putString("nickname",nickName);

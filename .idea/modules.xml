@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/MyAPP.iml" filepath="$PROJECT_DIR$/MyAPP.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/pro.iml" filepath="$PROJECT_DIR$/pro.iml" />
+      <module fileurl="file://D:\Lixin\android\MyAPP\app\app.iml" filepath="D:\Lixin\android\MyAPP\app\app.iml" />
+      <module fileurl="file://D:\Lixin\android\MyAPP\pro.iml" filepath="D:\Lixin\android\MyAPP\pro.iml" />
     </modules>
   </component>
 </project>
